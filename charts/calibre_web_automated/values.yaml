@@ -1,0 +1,70 @@
+# Default values for calibre-web-automated (CWA).
+
+# -- Port for CWA service/ingress.
+servicePort: 8083
+
+containers:
+  cwa:
+    # -- Image spec for the CWA container.
+    # @default -- See below
+    image:
+      # -- Image repository for CWA image.
+      repository: crocodilestick/calibre-web-automated
+      # -- Image pull policy for CWA image.
+      pullPolicy: IfNotPresent
+      # -- Image tag for CWA image.
+      tag: "v4.0.6"
+    # -- Additional volume mounts to add to the CWA container.
+    volumeMounts: []
+    # -- Environment variables for CWA container.
+    # @default -- See below
+    env:
+      # -- User ID in container.
+      PUID: 1000
+      # -- Ground ID in container.
+      PGID: 1000
+      # -- Timezone for CWA server. See:
+      # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      TZ: Etc/UTC
+
+# This is for the secrets for pulling an image from a private
+# repository more information can be found here:
+# https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+ingress:
+  # -- If true, enables ingress.
+  enabled: false
+  className: "nginx"
+  annotations: {}
+  hosts: []
+    # - host: calibre-web-automated.local
+    #   paths:
+    #     - path: /
+    #       pathType: Prefix
+  tls: []
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout:
+# https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout:
+# https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
+resources: {}
+
+# -- Additional volumes on the output Deployment definition.
+volumes: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
