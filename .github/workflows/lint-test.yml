@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run helm-docs
-        uses: losisin/helm-docs-action@v1.4.1
+        uses: losisin/helm-docs-github-action@v2
         with:
           chart-search-root: charts
 
