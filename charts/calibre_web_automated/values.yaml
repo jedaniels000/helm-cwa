@@ -5,8 +5,6 @@ servicePort: 8083
 
 containers:
   cwa:
-    # -- Image spec for the CWA container.
-    # @default -- See below
     image:
       # -- Image repository for CWA image.
       repository: crocodilestick/calibre-web-automated

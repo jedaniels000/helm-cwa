@@ -1,3 +1,5 @@
+<!-- README.md template for chart -->
+
 # calibre-web-automated
 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.6](https://img.shields.io/badge/AppVersion-4.0.6-informational?style=flat-square)
@@ -13,7 +15,6 @@ A deployment of Calibre Web Automated.
 | containers.cwa.env.PGID | int | `1000` | Ground ID in container. |
 | containers.cwa.env.PUID | int | `1000` | User ID in container. |
 | containers.cwa.env.TZ | string | `"Etc/UTC"` | Timezone for CWA server. See: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones |
-| containers.cwa.image | object | See below | Image spec for the CWA container. |
 | containers.cwa.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy for CWA image. |
 | containers.cwa.image.repository | string | `"crocodilestick/calibre-web-automated"` | Image repository for CWA image. |
 | containers.cwa.image.tag | string | `"v4.0.6"` | Image tag for CWA image. |
