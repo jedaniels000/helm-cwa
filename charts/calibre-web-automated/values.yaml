@@ -16,7 +16,7 @@ containers:
     # NOTE: If default PVC is enabled, you don't need to include
     # corresponding `volumeMount`s here as they're included by
     # default; these include `/config`, `/cwa-book-ingest`, and
-    # /calibre-library.
+    # `/calibre-library`.
     volumeMounts: []
     # -- Environment variables for CWA container.
     # @default -- See below
