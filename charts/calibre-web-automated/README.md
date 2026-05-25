@@ -5,7 +5,7 @@
 A deployment of Calibre Web Automated.
 
 > [!IMPORTANT]
-> This repo is not maintained or endorsed by the developer(s) of CWA.
+> This chart is unofficial and not maintained by the developer(s) of CWA.
 
 ![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 

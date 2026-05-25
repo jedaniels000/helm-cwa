@@ -3,7 +3,7 @@
 This repo provides a helm chart for Calibre Web Automated.
 
 > [!IMPORTANT]
-> This repo is not maintained or endorsed by the developer(s) of CWA.
+> This chart is unofficial and not maintained by the developer(s) of CWA.
 
 ## 📦 Charts
 
