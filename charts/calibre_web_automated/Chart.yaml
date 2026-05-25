@@ -24,3 +24,7 @@ version: 0.1.0
 appVersion: "4.0.6"
 
 icon: https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png
+
+maintainers:
+  - name: Jacob Daniels
+    url: https://github.com/jedaniels000
