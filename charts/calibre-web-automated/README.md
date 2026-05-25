@@ -2,6 +2,8 @@
 
 # calibre-web-automated
 
+A deployment of Calibre Web Automated.
+
 > [!IMPORTANT]
 > This repo is not maintained or endorsed by the developer(s) of CWA.
 
@@ -9,8 +11,6 @@
 
 [![GitHub Repo](https://img.shields.io/badge/View_on_GitHub-blue?logo=github)](https://github.com/jedaniels000/helm-cwa)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/calibre-web-automated)](https://artifacthub.io/packages/search?repo=calibre-web-automated)
-
-A deployment of Calibre Web Automated.
 
 ## Maintainers
 
