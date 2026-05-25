@@ -1,0 +1,26 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "semantic-release-helm",
+      {
+        "chartPath": "charts/calibre-web-automated",
+        "isChartPublish": false
+      }
+    ],
+    "@semantic-release/github",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "charts/calibre-web-automated/Chart.yaml"
+        ],
+        "message": "chore(release): bump chart version to ${nextRelease.version} [skip ci]"
+      }
+    ]
+  ]
+}

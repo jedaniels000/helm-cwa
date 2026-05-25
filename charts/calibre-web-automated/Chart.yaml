@@ -28,3 +28,7 @@ annotations:
   org.opencontainers.image.source: "https://github.com/jedaniels000/helm-cwa"
 
 icon: https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png
+
+maintainers:
+  - name: jedaniels000
+    url: https://github.com/jedaniels000
