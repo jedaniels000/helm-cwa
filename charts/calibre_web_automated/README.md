@@ -8,7 +8,7 @@ A deployment of Calibre Web Automated.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Jacob Daniels |  | <https://github.com/jedaniels000> |
+| jedaniels000 |  | <https://github.com/jedaniels000> |
 
 ## Values
 
