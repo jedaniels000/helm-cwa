@@ -54,9 +54,12 @@ jobs:
         run: |
           # DEBUG
           git branch -a
-          ct list-changed --target-branch ${{ github.event.repository.default_branch }} --debug
 
+          # DEBUG
+          set -x
           changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          # DEBUG
+          set +x
 
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> $GITHUB_OUTPUT
