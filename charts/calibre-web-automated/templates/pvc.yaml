@@ -1,0 +1,17 @@
+{{- if .Values.storage.pvc.enabled -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "calibre-web-automated.fullname" . }}
+  labels:
+    {{- include "calibre-web-automated.labels" . | nindent 4 }}
+spec:
+  volumeName: {{ include "calibre-web-automated.fullname" . }}
+  # Bypass default auto-provisioners & do not auto-create PV
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.storage.capacity | default "1Gi" }}
+{{- end }}

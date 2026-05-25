@@ -40,11 +40,27 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with $cwa.volumeMounts }}
           volumeMounts:
+            {{- if .Values.storage.pvc.enabled }}
+            - name: default-storage
+              mountPath: /config
+              subPath: config
+            - name: default-storage
+              mountPath: /cwa-book-ingest
+              subPath: cwa-book-ingest
+            - name: default-storage
+              mountPath: /calibre-library
+              subPath: calibre-library
+            {{- end }}
+            {{- with $cwa.volumeMounts }}
             {{- toYaml . | nindent 12 }}
-          {{- end }}
+            {{- end }}
       volumes:
+        {{- if .Values.storage.pvc.enabled }}
+        - name: default-storage
+          persistentVolumeClaim:
+            claimName: {{ include "calibre-web-automated.fullname" . }}
+        {{- end }}
         {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}

@@ -1,0 +1,27 @@
+{{- if .Values.storage.pv.enabled -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "calibre-web-automated.fullname" . }}
+  labels:
+    {{- include "calibre-web-automated.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.storage.capacity | default "1Gi" }}
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  # Retain saved data even if the PV is deleted
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: {{ .Values.storage.pv.path }}
+  storageClassName: ""
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - {{ .Values.storage.pv.hostname }}
+{{- end }}
