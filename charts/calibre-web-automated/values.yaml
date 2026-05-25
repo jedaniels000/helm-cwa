@@ -13,6 +13,10 @@ containers:
       # -- Image tag for CWA image.
       tag: "v4.0.6"
     # -- Additional volume mounts to add to the CWA container.
+    # NOTE: If default PVC is enabled, you don't need to include
+    # corresponding `volumeMount`s here as they're included by
+    # default; these include `/config`, `/cwa-book-ingest`, and
+    # /calibre-library.
     volumeMounts: []
     # -- Environment variables for CWA container.
     # @default -- See below
@@ -47,6 +51,20 @@ ingress:
     #   hosts:
     #     - chart-example.local
 
+storage:
+  # -- Size of storage to create/request (e.g. 10Gi)
+  capacity: ""
+  pv:
+    # -- If true, creates the default local persistant volume.
+    enabled: false
+    # -- Local storage path for PV.
+    path: ""
+    # -- Hostname for node to which PV will be assigned.
+    hostname: ""
+  pvc:
+    # -- If true, creates the default persistant volume claim.
+    enabled: false
+
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout:
 # https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
@@ -59,6 +77,8 @@ podLabels: {}
 resources: {}
 
 # -- Additional volumes on the output Deployment definition.
+# NOTE: If default PVC is enabled, you don't need to include that
+# volume here as it's included by default as `default-storage`.
 volumes: []
 
 nodeSelector: {}
