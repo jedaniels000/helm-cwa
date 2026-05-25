@@ -23,6 +23,10 @@ version: 0.1.0
 # It is recommended to use it with quotes.
 appVersion: "4.0.6"
 
+annotations:
+  # Link chart to corresponding GitHub repo
+  org.opencontainers.image.source: "https://github.com/jedaniels000/helm-cwa"
+
 icon: https://raw.githubusercontent.com/kovidgoyal/calibre/master/resources/images/lt.png
 
 maintainers:
