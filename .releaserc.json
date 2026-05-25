@@ -7,7 +7,7 @@
     [
       "semantic-release-helm",
       {
-        "chartPath": "charts/calibre_web_automated",
+        "chartPath": "charts/calibre-web-automated",
         "isChartPublish": false
       }
     ],
@@ -17,7 +17,7 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "charts/calibre_web_automated/Chart.yaml"
+          "charts/calibre-web-automated/Chart.yaml"
         ],
         "message": "chore(release): bump chart version to ${nextRelease.version} [skip ci]"
       }

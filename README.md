@@ -9,7 +9,7 @@ This repo provides a helm chart for Calibre Web Automated.
 
 Below are the included charts. Each includes their own `README.md` with additional documentation.
 
-- [calibre-web-automated](charts/calibre_web_automated): A deployment of Calibre Web Automated.
+- [calibre-web-automated](charts/calibre-web-automated): A deployment of Calibre Web Automated.
 
 ## 📄 License
 
