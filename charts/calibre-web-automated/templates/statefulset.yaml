@@ -75,7 +75,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       {{- include "calibre-web-automated.nodeAssignment" . | nindent 6 }}
-  
+
   volumeClaimTemplates:
     {{- range $name, $volumeClaim := .Values.containers.cwa.volumeClaims }}
     - metadata:

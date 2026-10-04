@@ -56,7 +56,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-# -- Additional entries to /etc/hosts for DNS resolution. Check K8s 
+# -- Additional entries to /etc/hosts for DNS resolution. Check K8s
 # documentation for additional info.
 hostAliases: []
 
