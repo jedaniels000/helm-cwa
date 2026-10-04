@@ -57,7 +57,7 @@ jobs:
 
           # DEBUG
           set -x
-          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }} --remote origin)
           # DEBUG
           set +x
 
