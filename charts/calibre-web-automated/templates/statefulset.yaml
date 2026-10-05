@@ -1,10 +1,17 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "calibre-web-automated.fullname" . }}
+  {{- with .Values.namespace }}
+  namespace: {{ . }}
+  {{- end }}
   labels:
     {{- include "calibre-web-automated.labels" . | nindent 4 }}
 spec:
+  # Required for StatefulSets: Ties pods to a Headless Service
+  serviceName: {{ include "calibre-web-automated.fullname" . }}-headless
+  # Hardcoded to 1 for SQLite safety
+  replicas: 1
   selector:
     matchLabels:
       {{- include "calibre-web-automated.selectorLabels" . | nindent 6 }}
@@ -24,11 +31,23 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- with .Values.securityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.hostAliases }}
+      hostAliases:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         {{- $cwa := .Values.containers.cwa }}
         - name: {{ .Chart.Name }}
           image: "{{ $cwa.image.repository }}:{{ $cwa.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ $cwa.image.pullPolicy }}
+          {{- with $cwa.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           ports:
             - containerPort: 8083
           env:
@@ -36,32 +55,38 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+            {{- with $cwa.envFrom }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           volumeMounts:
-            {{- if .Values.storage.pvc.enabled }}
-            - name: default-storage
-              mountPath: /config
-              subPath: config
-            - name: default-storage
-              mountPath: /cwa-book-ingest
-              subPath: cwa-book-ingest
-            - name: default-storage
-              mountPath: /calibre-library
-              subPath: calibre-library
+            {{- range $name, $volumeClaim := $cwa.volumeClaims }}
+            - name: {{ $name }}
+              mountPath: {{ $volumeClaim.mountPath }}
             {{- end }}
-            {{- with $cwa.volumeMounts }}
+            {{- with $cwa.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
       volumes:
-        {{- if .Values.storage.pvc.enabled }}
-        - name: default-storage
-          persistentVolumeClaim:
-            claimName: {{ include "calibre-web-automated.fullname" . }}
-        {{- end }}
         {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
       {{- include "calibre-web-automated.nodeAssignment" . | nindent 6 }}
+
+  volumeClaimTemplates:
+    {{- range $name, $volumeClaim := .Values.containers.cwa.volumeClaims }}
+    - metadata:
+        name: {{ $name }}
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        {{- with $volumeClaim.storageClassName }}
+        storageClassName: {{ . }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ $volumeClaim.storage }}
+    {{- end }}

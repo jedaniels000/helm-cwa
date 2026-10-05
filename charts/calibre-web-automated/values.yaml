@@ -5,6 +5,7 @@ servicePort: 8083
 
 containers:
   cwa:
+    enabled: true
     image:
       # -- Image repository for CWA image.
       repository: crocodilestick/calibre-web-automated
@@ -12,12 +13,16 @@ containers:
       pullPolicy: IfNotPresent
       # -- Image tag for CWA image.
       tag: "v4.0.6"
+    # -- Volume claim spec.
+    volumeClaims:
+      config:
+        mountPath: /config
+        storage: 100Mi
+      calibre-library:
+        mountPath: /calibre-library
+        storage: 1Gi
     # -- Additional volume mounts to add to the CWA container.
-    # NOTE: If default PVC is enabled, you don't need to include
-    # corresponding `volumeMount`s here as they're included by
-    # default; these include `/config`, `/cwa-book-ingest`, and
-    # `/calibre-library`.
-    volumeMounts: []
+    extraVolumeMounts: []
     # -- Environment variables for CWA container.
     # @default -- See below
     env:
@@ -28,6 +33,21 @@ containers:
       # -- Timezone for CWA server. See:
       # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
       TZ: Etc/UTC
+    # -- Security context for the CWA container.
+    # @default -- See below
+    securityContext:
+      # -- UID to run as.
+      runAsUser: 1000
+      # -- GID to run as.
+      runAsGroup: 1000
+      # -- Whether or not to run as non-root.
+      runAsNonRoot: true
+      # -- Whether or not to allow escalation of privileges.
+      allowPrivilegeEscalation: false
+
+# -- Pod security context.
+securityContext:
+  fsGroup: 1000
 
 # This is for the secrets for pulling an image from a private
 # repository more information can be found here:
@@ -36,34 +56,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-ingress:
-  # -- If true, enables ingress.
-  enabled: false
-  className: "nginx"
-  annotations: {}
-  hosts: []
-    # - host: calibre-web-automated.local
-    #   paths:
-    #     - path: /
-    #       pathType: Prefix
-  tls: []
-    # - secretName: chart-example-tls
-    #   hosts:
-    #     - chart-example.local
-
-storage:
-  # -- Size of storage to create/request (e.g. 10Gi)
-  capacity: ""
-  pv:
-    # -- If true, creates the default local persistant volume.
-    enabled: false
-    # -- Local storage path for PV.
-    path: ""
-    # -- Hostname for node to which PV will be assigned.
-    hostname: ""
-  pvc:
-    # -- If true, creates the default persistant volume claim.
-    enabled: false
+# -- Additional entries to /etc/hosts for DNS resolution. Check K8s
+# documentation for additional info.
+hostAliases: []
 
 # This is for setting Kubernetes Annotations to a Pod.
 # For more information checkout:
@@ -77,8 +72,8 @@ podLabels: {}
 resources: {}
 
 # -- Additional volumes on the output Deployment definition.
-# NOTE: If default PVC is enabled, you don't need to include that
-# volume here as it's included by default as `default-storage`.
+# NOTE: If default volume claims are enabled, you don't need to include those
+# here.
 volumes: []
 
 nodeSelector: {}
