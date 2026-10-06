@@ -2,6 +2,8 @@
 
 # -- Port for CWA service/ingress.
 servicePort: 8083
+# -- Number of replicas for the pod.
+replicaCount: 1
 
 containers:
   cwa:
