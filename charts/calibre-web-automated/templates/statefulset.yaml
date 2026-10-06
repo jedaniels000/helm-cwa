@@ -10,8 +10,8 @@ metadata:
 spec:
   # Required for StatefulSets: Ties pods to a Headless Service
   serviceName: {{ include "calibre-web-automated.fullname" . }}-headless
-  # Hardcoded to 1 for SQLite safety
-  replicas: 1
+  # Hardcoded to max of 1 for SQLite safety
+  replicas: {{ max 1 (.Values.replicaCount | int) }}
   selector:
     matchLabels:
       {{- include "calibre-web-automated.selectorLabels" . | nindent 6 }}
