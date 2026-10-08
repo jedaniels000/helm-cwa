@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/jedaniels000/helm-cwa/compare/v1.2.0...v1.2.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* Add namespace to service ([ddd12c7](https://github.com/jedaniels000/helm-cwa/commit/ddd12c7fc3fae7702bb904ba06e77fa53ecf9ae7))
+
 # [1.2.0](https://github.com/jedaniels000/helm-cwa/compare/v1.1.0...v1.2.0) (2026-10-06)
 
 
