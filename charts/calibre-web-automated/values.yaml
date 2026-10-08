@@ -1,7 +1,7 @@
 # Default values for calibre-web-automated (CWA).
 
 # -- Port for CWA service/ingress.
-servicePort: 8083
+servicePort: 80
 # -- Number of replicas for the pod.
 replicaCount: 1
 
