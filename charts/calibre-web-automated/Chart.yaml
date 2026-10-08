@@ -2,8 +2,8 @@ apiVersion: v2
 name: calibre-web-automated
 description: A deployment of Calibre Web Automated.
 type: application
-version: 1.2.2
-appVersion: 1.2.2
+version: 1.2.3
+appVersion: 1.2.3
 annotations:
   org.opencontainers.image.source: https://github.com/jedaniels000/helm-cwa
 icon: >-

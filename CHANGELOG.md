@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/jedaniels000/helm-cwa/compare/v1.2.2...v1.2.3) (2026-10-08)
+
+
+### Bug Fixes
+
+* Patch container securityContext to run by default ([b3ce4d7](https://github.com/jedaniels000/helm-cwa/commit/b3ce4d703d9c6ffe16b2926374f6215ce92a63e9))
+* Patch service definition to include headless service ([46b2814](https://github.com/jedaniels000/helm-cwa/commit/46b2814fae53c9b7d612785034be4cabc3738ebc))
+
 ## [1.2.2](https://github.com/jedaniels000/helm-cwa/compare/v1.2.1...v1.2.2) (2026-10-08)
 
 
