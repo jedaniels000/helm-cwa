@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/jedaniels000/helm-cwa/compare/v1.2.1...v1.2.2) (2026-10-08)
+
+
+### Bug Fixes
+
+* Patch logic for maxing replicas at 1 ([607a143](https://github.com/jedaniels000/helm-cwa/commit/607a14324f000a8efbc4b74e50fc5df5a09c57f0))
+
 ## [1.2.1](https://github.com/jedaniels000/helm-cwa/compare/v1.2.0...v1.2.1) (2026-10-08)
 
 
