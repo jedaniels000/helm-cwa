@@ -1,7 +1,7 @@
 # Default values for calibre-web-automated (CWA).
 
 # -- Port for CWA service/ingress.
-servicePort: 8083
+servicePort: 80
 # -- Number of replicas for the pod.
 replicaCount: 1
 
@@ -38,14 +38,14 @@ containers:
     # -- Security context for the CWA container.
     # @default -- See below
     securityContext:
-      # -- UID to run as.
-      runAsUser: 1000
-      # -- GID to run as.
-      runAsGroup: 1000
-      # -- Whether or not to run as non-root.
-      runAsNonRoot: true
-      # -- Whether or not to allow escalation of privileges.
       allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+        add:
+          - CHOWN
+          - SETUID
+          - SETGID
 
 # -- Pod security context.
 securityContext:

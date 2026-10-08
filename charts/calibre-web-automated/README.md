@@ -7,7 +7,7 @@ A deployment of Calibre Web Automated.
 > [!IMPORTANT]
 > This chart is unofficial and not maintained by the developer(s) of CWA.
 
-![Version: 1.2.1](https://img.shields.io/badge/Version-1.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.1](https://img.shields.io/badge/AppVersion-1.2.1-informational?style=flat-square)
+![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.2](https://img.shields.io/badge/AppVersion-1.2.2-informational?style=flat-square)
 
 [![GitHub Repo](https://img.shields.io/badge/View_on_GitHub-blue?logo=github)](https://github.com/jedaniels000/helm-cwa)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/calibre-web-automated)](https://artifacthub.io/packages/search?repo=calibre-web-automated)
@@ -33,10 +33,6 @@ A deployment of Calibre Web Automated.
 | containers.cwa.image.repository | string | `"crocodilestick/calibre-web-automated"` | Image repository for CWA image. |
 | containers.cwa.image.tag | string | `"v4.0.6"` | Image tag for CWA image. |
 | containers.cwa.securityContext | object | See below | Security context for the CWA container. |
-| containers.cwa.securityContext.allowPrivilegeEscalation | bool | `false` | Whether or not to allow escalation of privileges. |
-| containers.cwa.securityContext.runAsGroup | int | `1000` | GID to run as. |
-| containers.cwa.securityContext.runAsNonRoot | bool | `true` | Whether or not to run as non-root. |
-| containers.cwa.securityContext.runAsUser | int | `1000` | UID to run as. |
 | containers.cwa.volumeClaims | object | `{"calibre-library":{"mountPath":"/calibre-library","storage":"1Gi"},"config":{"mountPath":"/config","storage":"100Mi"}}` | Volume claim spec. |
 | fullnameOverride | string | `""` |  |
 | hostAliases | list | `[]` | Additional entries to /etc/hosts for DNS resolution. Check K8s documentation for additional info. |
@@ -48,7 +44,7 @@ A deployment of Calibre Web Automated.
 | replicaCount | int | `1` | Number of replicas for the pod. |
 | resources | object | `{}` |  |
 | securityContext | object | `{"fsGroup":1000}` | Pod security context. |
-| servicePort | int | `8083` | Port for CWA service/ingress. |
+| servicePort | int | `80` | Port for CWA service/ingress. |
 | tolerations | list | `[]` |  |
 | volumes | list | `[]` | Additional volumes on the output Deployment definition. NOTE: If default volume claims are enabled, you don't need to include those here. |
 
