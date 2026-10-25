@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/jedaniels000/helm-cwa/compare/v1.2.3...v1.2.4) (2026-10-25)
+
+
+### Bug Fixes
+
+* Add DAC_OVERRIDE capability to container securityContext ([7c3a815](https://github.com/jedaniels000/helm-cwa/commit/7c3a8153621f6ded4cab487510e8b8ed51098f52))
+
 ## [1.2.3](https://github.com/jedaniels000/helm-cwa/compare/v1.2.2...v1.2.3) (2026-10-08)
 
 
