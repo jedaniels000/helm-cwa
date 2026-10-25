@@ -7,7 +7,7 @@ A deployment of Calibre Web Automated.
 > [!IMPORTANT]
 > This chart is unofficial and not maintained by the developer(s) of CWA.
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.2](https://img.shields.io/badge/AppVersion-1.2.2-informational?style=flat-square)
+![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.2.3](https://img.shields.io/badge/AppVersion-1.2.3-informational?style=flat-square)
 
 [![GitHub Repo](https://img.shields.io/badge/View_on_GitHub-blue?logo=github)](https://github.com/jedaniels000/helm-cwa)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/calibre-web-automated)](https://artifacthub.io/packages/search?repo=calibre-web-automated)
