@@ -46,6 +46,7 @@ containers:
           - CHOWN
           - SETUID
           - SETGID
+          - DAC_OVERRIDE
 
 # -- Pod security context.
 securityContext:
